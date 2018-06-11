@@ -1,6 +1,6 @@
 # MovieStage1
 put you api key to ./app/src/main/res/values/strings.xml
-<resources>
+```<resources>
     <string name="app_name">Movie Stage 1</string>
     <!-- put your API key below -->
     <string name="api_key"></string>
@@ -10,3 +10,4 @@ put you api key to ./app/src/main/res/values/strings.xml
     <string name="popularity_key">popularity.desc</string>
     <string name="top_rated_key">top_rated.desc</string>
 </resources>
+```
