@@ -28,7 +28,7 @@ public class MainActivity
     private GridView mGridview;
     private MenuItem mPopularMenuItem;
     private MenuItem mTopRatedMenuItem;
-    private String mSortBy = "top_rated.desc";
+    private String mSortBy;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +36,7 @@ public class MainActivity
         setContentView(R.layout.activity_main);
 
         mImageAdapter = new ImageAdapter(this);
+        mSortBy = getResources().getString(R.string.top_rated_key);
 
         mGridview = (GridView) findViewById(R.id.gridview);
         mGridview.setAdapter(mImageAdapter);

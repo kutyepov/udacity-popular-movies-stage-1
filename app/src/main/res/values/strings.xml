@@ -5,5 +5,5 @@
     <string name="release_date_label">Release Date:</string>
     <string name="movie_extra">MOVIE_EXTRA</string>
     <string name="popularity_key">popularity.desc</string>
-    <string name="top_rated_key">top_rated.desc</string>
+    <string name="top_rated_key">vote_average.desc</string>
 </resources>
