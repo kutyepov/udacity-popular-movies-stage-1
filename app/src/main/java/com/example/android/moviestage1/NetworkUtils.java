@@ -15,16 +15,14 @@ import java.net.URL;
 import java.util.Scanner;
 
 public final class NetworkUtils {
-    private static final String MOVIE_DB_URL = "https://api.themoviedb.org/3/discover/movie";
+    private static final String MOVIE_DB_URL = "https://api.themoviedb.org/3/movie";
     private static final String IMAGE_DB_URL = "https://image.tmdb.org/t/p/";
-    private static final String SORT_BY_PARAM = "sort_by";
     private static final String API_KEY_PARAM = "api_key";
-    private static String API_KEY;
+    private static final String API_KEY = BuildConfig.API_KEY;
     private static Context mContext;
 
     NetworkUtils(Context context) {
         mContext = context;
-        API_KEY = context.getResources().getString(R.string.api_key);
     }
 
     public static String getImageBaseURL() {
@@ -35,7 +33,7 @@ public final class NetworkUtils {
 
     public static URL buildURL(String sortBy) {
         Uri uri = Uri.parse(MOVIE_DB_URL).buildUpon()
-                .appendQueryParameter(SORT_BY_PARAM, sortBy)
+                .appendPath(sortBy)
                 .appendQueryParameter(API_KEY_PARAM, API_KEY)
                 .build();
         URL url = null;
