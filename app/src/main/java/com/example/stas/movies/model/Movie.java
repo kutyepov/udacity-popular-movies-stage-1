@@ -1,8 +1,9 @@
-package com.example.android.moviestage1;
-
+package com.example.stas.movies.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+
+import com.google.gson.annotations.SerializedName;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -15,66 +16,19 @@ public class Movie implements Parcelable {
     private final static String IMAGE_PATH_KEY = "poster_path";
 
     private JSONObject mMovie;
+    @SerializedName(TITLE_KEY)
     private String mTitle = null;
+    @SerializedName(RATING_KEY)
     private String mRating = null;
+    @SerializedName(RELEASE_DATE_KEY)
     private String mReleaseDate = null;
+    @SerializedName(DESCRIPTION_KEY)
     private String mDescription = null;
+    @SerializedName(IMAGE_PATH_KEY)
     private String mPartialImagePath = null;
-    private String mFullImagePath = null;
+//    private String mFullImagePath = null;
 
-    Movie(JSONObject movie) {
-        mMovie = movie;
-        setTitle();
-        setRating();
-        setReleaseDate();
-        setDescription();
-        setPartialImagePath();
-        setFullImagePath();
-    }
-
-    private void setTitle() {
-        try {
-            mTitle = mMovie.getString(TITLE_KEY);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void setRating() {
-        try {
-            mRating = mMovie.getString(RATING_KEY);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void setReleaseDate() {
-        try {
-            mReleaseDate = mMovie.getString(RELEASE_DATE_KEY);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void setDescription() {
-        try {
-            mDescription = mMovie.getString(DESCRIPTION_KEY);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void setPartialImagePath() {
-        try {
-            mPartialImagePath = mMovie.getString(IMAGE_PATH_KEY);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void setFullImagePath() {
-        mFullImagePath = NetworkUtils.getImageBaseURL() + this.getPartialImagePath();
-    }
+    public Movie() { }
 
     public String getTitle() {
         return mTitle;
@@ -96,10 +50,6 @@ public class Movie implements Parcelable {
         return mPartialImagePath;
     }
 
-    public String getFullImagePath() {
-        return mFullImagePath;
-    }
-
     @Override
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeString(mTitle);
@@ -107,7 +57,7 @@ public class Movie implements Parcelable {
         parcel.writeString(mReleaseDate);
         parcel.writeString(mDescription);
         parcel.writeString(mPartialImagePath);
-        parcel.writeString(mFullImagePath);
+//        parcel.writeString(mFullImagePath);
     }
 
     @Override
@@ -121,7 +71,7 @@ public class Movie implements Parcelable {
         mReleaseDate = parcel.readString();
         mDescription = parcel.readString();
         mPartialImagePath = parcel.readString();
-        mFullImagePath = parcel.readString();
+//        mFullImagePath = parcel.readString();
     }
 
     public static final Parcelable.Creator<Movie> CREATOR = new Parcelable.Creator<Movie>() {
