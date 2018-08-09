@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
 import com.example.stas.movies.R;
+import com.example.stas.movies.view.MovieGrid.MovieListFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -13,12 +14,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Add project list fragment if this is first creation
         if (savedInstanceState == null) {
             MovieListFragment fragment = new MovieListFragment();
 
-            getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.fragment_container, fragment, MovieListFragment.TAG).commit();
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.fragment_container, fragment, MovieListFragment.TAG)
+                    .commit();
         }
     }
 }

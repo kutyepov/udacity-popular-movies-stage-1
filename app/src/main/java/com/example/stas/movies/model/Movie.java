@@ -9,13 +9,16 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class Movie implements Parcelable {
+    private final static String ID_KEY = "id";
     private final static String TITLE_KEY = "title";
     private final static String RATING_KEY = "vote_average";
     private final static String RELEASE_DATE_KEY = "release_date";
     private final static String DESCRIPTION_KEY = "overview";
     private final static String IMAGE_PATH_KEY = "poster_path";
 
-    private JSONObject mMovie;
+    //    private JSONObject mMovie;
+    @SerializedName(ID_KEY)
+    private int mID;
     @SerializedName(TITLE_KEY)
     private String mTitle = null;
     @SerializedName(RATING_KEY)
@@ -28,7 +31,11 @@ public class Movie implements Parcelable {
     private String mPartialImagePath = null;
 //    private String mFullImagePath = null;
 
-    public Movie() { }
+//    public Movie() { }
+
+    public int getID() {
+        return mID;
+    }
 
     public String getTitle() {
         return mTitle;
@@ -52,6 +59,7 @@ public class Movie implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeInt(mID);
         parcel.writeString(mTitle);
         parcel.writeString(mRating);
         parcel.writeString(mReleaseDate);
@@ -65,7 +73,8 @@ public class Movie implements Parcelable {
         return 0;
     }
 
-    private Movie (Parcel parcel) {
+    private Movie(Parcel parcel) {
+        mID = parcel.readInt();
         mTitle = parcel.readString();
         mRating = parcel.readString();
         mReleaseDate = parcel.readString();

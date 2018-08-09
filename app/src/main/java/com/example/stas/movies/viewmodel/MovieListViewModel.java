@@ -12,15 +12,19 @@ import java.util.List;
 
 public class MovieListViewModel extends AndroidViewModel {
     private final LiveData<List<Movie>> movieListObservable;
-    private String mSortBy;
+    private String mSortBy = "popular";
 
     public MovieListViewModel(Application application) {
         super(application);
-        movieListObservable = MovieRepository.getInstance().getMovieList("popular");
+        movieListObservable = MovieRepository.getInstance().getMovieList(getSort());
     }
 
     public void setSort(String sortBy) {
         this.mSortBy = sortBy;
+    }
+
+    public String getSort() {
+        return this.mSortBy;
     }
 
     /**

@@ -1,4 +1,4 @@
-package com.example.stas.movies.view;
+package com.example.stas.movies.view.MovieGrid;
 
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
@@ -14,7 +14,7 @@ import android.view.ViewGroup;
 
 import com.example.stas.movies.R;
 import com.example.stas.movies.model.Movie;
-import com.example.stas.movies.view.adapter.ImageAdapter;
+import com.example.stas.movies.view.MovieGrid.adapter.ImageAdapter;
 import com.example.stas.movies.viewmodel.MovieListViewModel;
 
 import java.util.List;

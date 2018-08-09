@@ -1,4 +1,4 @@
-package com.example.stas.movies.view.adapter;
+package com.example.stas.movies.view.MovieGrid.adapter;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -10,6 +10,7 @@ import android.widget.ImageView;
 
 import com.example.stas.movies.R;
 import com.example.stas.movies.model.Movie;
+import com.example.stas.movies.view.MovieGrid.listener.PosterClickListener;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -56,6 +57,7 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHol
         }
 
         public void bind(Movie movie) {
+            imageView.setOnClickListener(new PosterClickListener(mContext, movie));
             Picasso
                     .with(mContext)
                     .load("https://image.tmdb.org/t/p/w185/" + movie.getPartialImagePath())

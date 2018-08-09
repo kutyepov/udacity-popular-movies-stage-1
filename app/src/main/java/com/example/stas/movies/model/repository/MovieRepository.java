@@ -8,6 +8,8 @@ import com.example.stas.movies.model.MovieResponse;
 
 import java.util.List;
 
+import com.example.stas.movies.model.MovieTrailer;
+import com.example.stas.movies.model.MovieTrailerResponse;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -16,8 +18,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MovieRepository {
     private TMDBService tmdbService;
-    private static MovieRepository projectRepository;
-    private final MutableLiveData<List<Movie>> data = new MutableLiveData<>();
+    private static MovieRepository movieRepository;
+    private final MutableLiveData<List<Movie>> movieListData = new MutableLiveData<>();
+    private final MutableLiveData<List<MovieTrailer>> movieTrailerListData = new MutableLiveData<>();
 
     private MovieRepository() {
         Retrofit retrofit = new Retrofit.Builder()
@@ -29,10 +32,10 @@ public class MovieRepository {
     }
 
     public synchronized static MovieRepository getInstance() {
-        if (projectRepository == null) {
-            projectRepository = new MovieRepository();
+        if (movieRepository == null) {
+            movieRepository = new MovieRepository();
         }
-        return projectRepository;
+        return movieRepository;
     }
 
     public LiveData<List<Movie>> getMovieList(String sortBy) {
@@ -40,35 +43,36 @@ public class MovieRepository {
                 .getMovieList(sortBy, TMDBService.API_KEY)
                 .enqueue(new Callback<MovieResponse>() {
                     @Override
-                    public void onResponse(Call<MovieResponse> call, Response<MovieResponse> response) {
-                        data.setValue(response.body().getResults());
+                    public void onResponse(
+                            Call<MovieResponse> call,
+                            Response<MovieResponse> response) {
+                        movieListData.setValue(response.body().getResults());
                     }
 
                     @Override
                     public void onFailure(Call<MovieResponse> call, Throwable t) {
-                        data.setValue(null);
+                        movieListData.setValue(null);
                     }
                 });
-        return data;
+        return movieListData;
     }
 
-//    public LiveData<Movie> getProjectDetails(String userID, String projectName) {
-//        final MutableLiveData<Movie> data = new MutableLiveData<>();
-//
-//        tmdbService.getProjectDetails(userID, projectName).enqueue(new Callback<Movie>() {
-//            @Override
-//            public void onResponse(Call<Movie> call, Response<Movie> response) {
-//                simulateDelay();
-//                data.setValue(response.body());
-//            }
-//
-//            @Override
-//            public void onFailure(Call<Movie> call, Throwable t) {
-//                // TODO better error handling in part #2 ...
-//                data.setValue(null);
-//            }
-//        });
-//
-//        return data;
-//    }
+    public LiveData<List<MovieTrailer>> getMovieTrailerList(int id) {
+        tmdbService
+                .getMovieTrailerList(id, TMDBService.API_KEY)
+                .enqueue(new Callback<MovieTrailerResponse>() {
+                    @Override
+                    public void onResponse(
+                            Call<MovieTrailerResponse> call,
+                            Response<MovieTrailerResponse> response) {
+                        movieTrailerListData.setValue(response.body().getResults());
+                    }
+
+                    @Override
+                    public void onFailure(Call<MovieTrailerResponse> call, Throwable t) {
+                        movieTrailerListData.setValue(null);
+                    }
+                });
+        return movieTrailerListData;
+    }
 }
