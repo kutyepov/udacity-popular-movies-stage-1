@@ -3,13 +3,10 @@ package com.example.stas.movies.model.repository;
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 
-import com.example.stas.movies.model.Movie;
-import com.example.stas.movies.model.MovieResponse;
+import com.example.stas.movies.model.*;
 
 import java.util.List;
 
-import com.example.stas.movies.model.MovieTrailer;
-import com.example.stas.movies.model.MovieTrailerResponse;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -21,6 +18,7 @@ public class MovieRepository {
     private static MovieRepository movieRepository;
     private final MutableLiveData<List<Movie>> movieListData = new MutableLiveData<>();
     private final MutableLiveData<List<MovieTrailer>> movieTrailerListData = new MutableLiveData<>();
+    private final MutableLiveData<List<MovieReview>> movieReviewListData = new MutableLiveData<>();
 
     private MovieRepository() {
         Retrofit retrofit = new Retrofit.Builder()
@@ -74,5 +72,24 @@ public class MovieRepository {
                     }
                 });
         return movieTrailerListData;
+    }
+
+    public LiveData<List<MovieReview>> getMovieReviewList(int id) {
+        tmdbService
+                .getMovieReviewList(id, TMDBService.API_KEY)
+                .enqueue(new Callback<MovieReviewResponse>() {
+                    @Override
+                    public void onResponse(
+                            Call<MovieReviewResponse> call,
+                            Response<MovieReviewResponse> response) {
+                        movieReviewListData.setValue(response.body().getResults());
+                    }
+
+                    @Override
+                    public void onFailure(Call<MovieReviewResponse> call, Throwable t) {
+                        movieTrailerListData.setValue(null);
+                    }
+                });
+        return movieReviewListData;
     }
 }

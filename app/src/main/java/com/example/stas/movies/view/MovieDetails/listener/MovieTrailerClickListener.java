@@ -1,8 +1,10 @@
 package com.example.stas.movies.view.MovieDetails.listener;
 
 import android.content.Context;
-import android.util.Log;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.View;
+import com.example.stas.movies.R;
 import com.example.stas.movies.model.MovieTrailer;
 
 public class MovieTrailerClickListener implements View.OnClickListener {
@@ -16,9 +18,8 @@ public class MovieTrailerClickListener implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-//        Intent intent = new Intent(context, MovieDetailsActivity.class);
-//        intent.putExtra(this.context.getResources().getString(R.string.movie_extra), trailer);
-//        this.context.startActivity(intent);
-        Log.d("trailer has been clicked", "yo");
+        String youtubeURL = this.context.getResources().getString(R.string.watch_youtube_url);
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(youtubeURL + trailer.getSource()));
+        this.context.startActivity(intent);
     }
 }

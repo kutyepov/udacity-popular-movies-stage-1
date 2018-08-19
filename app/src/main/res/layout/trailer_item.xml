@@ -10,9 +10,5 @@
             android:layout_height="wrap_content"
             android:drawableLeft="@android:drawable/ic_media_play"
             android:drawableStart="@android:drawable/ic_media_play"
-    >
-
-        Hello World
-    </Button>
-
+    />
 </android.support.constraint.ConstraintLayout>

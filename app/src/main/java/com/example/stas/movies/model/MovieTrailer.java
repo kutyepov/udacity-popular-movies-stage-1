@@ -18,7 +18,7 @@ public class MovieTrailer implements Parcelable {
         return mName;
     }
 
-    public String getTitle() {
+    public String getSource() {
         return mSource;
     }
 

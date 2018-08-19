@@ -4,12 +4,12 @@ import android.app.Application;
 import android.arch.lifecycle.ViewModel;
 import android.arch.lifecycle.ViewModelProvider;
 
-public class MovieTrailerListViewModelFactory extends ViewModelProvider.NewInstanceFactory {
+public class MovieDetailsTrailerListViewModelFactory extends ViewModelProvider.NewInstanceFactory {
     private Application mApplication;
     private int mID;
 
 
-    public MovieTrailerListViewModelFactory(Application application, int id) {
+    public MovieDetailsTrailerListViewModelFactory(Application application, int id) {
         mApplication = application;
         mID = id;
     }

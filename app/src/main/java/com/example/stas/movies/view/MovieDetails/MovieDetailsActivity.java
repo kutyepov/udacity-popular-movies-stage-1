@@ -14,11 +14,12 @@ public class MovieDetailsActivity extends AppCompatActivity {
 
         MovieInfoFragment movieInfoFragment = new MovieInfoFragment();
         MovieTrailerFragment movieTrailerFragment = new MovieTrailerFragment();
-        getIntent().getExtras();
+        MovieReviewFragment movieReviewFragment = new MovieReviewFragment();
 
         getSupportFragmentManager()
                 .beginTransaction()
                 .add(R.id.movie_trailer, movieTrailerFragment, MovieListFragment.TAG)
+                .add(R.id.movie_review, movieReviewFragment, MovieListFragment.TAG)
                 .add(R.id.movie_primary_info, movieInfoFragment, MovieListFragment.TAG)
                 .commit();
     }

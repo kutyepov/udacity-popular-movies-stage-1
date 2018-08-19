@@ -3,6 +3,7 @@ package com.example.stas.movies.model.repository;
 import com.example.stas.movies.BuildConfig;
 import com.example.stas.movies.model.MovieResponse;
 
+import com.example.stas.movies.model.MovieReviewResponse;
 import com.example.stas.movies.model.MovieTrailerResponse;
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -27,4 +28,9 @@ interface TMDBService {
             @Query(API_KEY_PARAM) String apiKey
     );
 
+    @GET("movie/{id}/reviews")
+    Call<MovieReviewResponse> getMovieReviewList(
+            @Path("id") int id,
+            @Query(API_KEY_PARAM) String apiKey
+    );
 }

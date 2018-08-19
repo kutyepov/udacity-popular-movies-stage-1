@@ -3,4 +3,5 @@
     <string name="movie_extra">MOVIE_EXTRA</string>
     <string name="release_date_label">Release Date:</string>
     <string name="movie_id_key">MOVIE_ID_KEY</string>
+    <string name="watch_youtube_url">https://www.youtube.com/watch?v=</string>
 </resources>

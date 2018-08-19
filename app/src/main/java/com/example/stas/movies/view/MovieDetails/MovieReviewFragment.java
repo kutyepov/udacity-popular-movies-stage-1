@@ -15,30 +15,30 @@ import android.view.ViewGroup;
 
 import com.example.stas.movies.R;
 import com.example.stas.movies.model.Movie;
-import com.example.stas.movies.model.MovieTrailer;
-import com.example.stas.movies.view.MovieDetails.adapter.TrailerAdapter;
-import com.example.stas.movies.viewmodel.MovieTrailerListViewModel;
-import com.example.stas.movies.viewmodel.MovieDetailsTrailerListViewModelFactory;
+import com.example.stas.movies.model.MovieReview;
+import com.example.stas.movies.view.MovieDetails.adapter.ReviewAdapter;
+import com.example.stas.movies.viewmodel.MovieDetailsReviewListViewModelFactory;
+import com.example.stas.movies.viewmodel.MovieReviewListViewModel;
 
 import java.util.List;
 
-public class MovieTrailerFragment extends Fragment {
-    public static final String TAG = "MovieTrailerFragment";
-    private TrailerAdapter trailerAdapter;
+public class MovieReviewFragment extends Fragment {
+    public static final String TAG = "MovieReviewFragment";
+    private ReviewAdapter reviewAdapter;
     private RecyclerView recyclerView;
 
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        trailerAdapter = new TrailerAdapter(getActivity());
+        reviewAdapter = new ReviewAdapter(getActivity());
         Movie movie = getActivity().getIntent().getParcelableExtra(getResources().getString(R.string.movie_extra));
 
         final Application app = getActivity().getApplication();
-        final MovieDetailsTrailerListViewModelFactory trailerListViewModel = new MovieDetailsTrailerListViewModelFactory(app, movie.getID());
-        final MovieTrailerListViewModel viewModel = ViewModelProviders
-                .of(getActivity(), trailerListViewModel)
-                .get(MovieTrailerListViewModel.class);
+        final MovieDetailsReviewListViewModelFactory reviewListViewModel = new MovieDetailsReviewListViewModelFactory(app, movie.getID());
+        final MovieReviewListViewModel viewModel = ViewModelProviders
+                .of(getActivity(), reviewListViewModel)
+                .get(MovieReviewListViewModel.class);
 
         observeViewModel(viewModel);
     }
@@ -47,7 +47,7 @@ public class MovieTrailerFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         recyclerView = view.findViewById(R.id.movie_trailer_rv);
-        recyclerView.setAdapter(trailerAdapter);
+        recyclerView.setAdapter(reviewAdapter);
     }
 
     @Nullable
@@ -57,13 +57,13 @@ public class MovieTrailerFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_movie_trailer, container, false);
     }
 
-    private void observeViewModel(MovieTrailerListViewModel viewModel) {
-        viewModel.getMovieTrailerListObservable().observe(this, new Observer<List<MovieTrailer>>() {
+    private void observeViewModel(MovieReviewListViewModel viewModel) {
+        viewModel.getMovieReviewListObservable().observe(this, new Observer<List<MovieReview>>() {
             @Override
-            public void onChanged(@Nullable List<MovieTrailer> trailers) {
-                if (trailers != null) {
-                    trailerAdapter.setMovies(trailers);
-                    trailerAdapter.notifyDataSetChanged();
+            public void onChanged(@Nullable List<MovieReview> review) {
+                if (review != null) {
+                    reviewAdapter.setMovies(review);
+                    reviewAdapter.notifyDataSetChanged();
                 }
             }
         });
