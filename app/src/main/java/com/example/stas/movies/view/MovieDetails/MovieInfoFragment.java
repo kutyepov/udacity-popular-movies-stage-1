@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.example.stas.movies.R;
 import com.example.stas.movies.model.Movie;
+import com.example.stas.movies.model.repository.TMDBService;
 import com.squareup.picasso.Picasso;
 
 public class MovieInfoFragment extends Fragment {
@@ -44,7 +45,7 @@ public class MovieInfoFragment extends Fragment {
 
         Picasso
                 .with(getContext())
-                .load("https://image.tmdb.org/t/p/w185/" + movie.getPartialImagePath())
+                .load(TMDBService.IMAGE_DB_URL + movie.getPartialImagePath())
                 .into(posterImageView);
 
         releaseDateTextView.setText(movie.getReleaseDate());

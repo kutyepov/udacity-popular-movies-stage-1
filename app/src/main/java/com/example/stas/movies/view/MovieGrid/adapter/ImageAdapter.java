@@ -10,6 +10,7 @@ import android.widget.ImageView;
 
 import com.example.stas.movies.R;
 import com.example.stas.movies.model.Movie;
+import com.example.stas.movies.model.repository.TMDBService;
 import com.example.stas.movies.view.MovieGrid.listener.PosterClickListener;
 import com.squareup.picasso.Picasso;
 
@@ -60,7 +61,7 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHol
             imageView.setOnClickListener(new PosterClickListener(mContext, movie));
             Picasso
                     .with(mContext)
-                    .load("https://image.tmdb.org/t/p/w185/" + movie.getPartialImagePath())
+                    .load(TMDBService.IMAGE_DB_URL + movie.getPartialImagePath())
                     .into(imageView);
         }
     }
