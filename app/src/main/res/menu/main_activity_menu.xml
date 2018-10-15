@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+      xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/show_top_rated"
+          android:title=""
+          android:icon="@android:drawable/arrow_up_float"
+          android:visible="true"
+          app:showAsAction="always"/>
+
+    <item android:id="@+id/show_popular"
+          android:title=""
+          android:icon="@android:drawable/arrow_down_float"
+          android:visible="false"
+          app:showAsAction="always"/>
+
+    <item android:id="@+id/show_favorites"
+          android:title=""
+          android:icon="@android:drawable/star_on"
+          android:visible="true"
+          app:showAsAction="always"/>
+</menu>

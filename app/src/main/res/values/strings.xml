@@ -4,4 +4,11 @@
     <string name="release_date_label">Release Date:</string>
     <string name="movie_id_key">MOVIE_ID_KEY</string>
     <string name="watch_youtube_url">https://www.youtube.com/watch?v=</string>
+    <string name="max_rating">/10</string>
+    <string name="reviews">Reviews:</string>
+    <string name="trailers">Trailers:</string>
+    <string name="description">Description:</string>
+    <string name="top_rated_key">top_rated</string>
+    <string name="popularity_key">popular</string>
+    <string name="favorites_key">favorites</string>
 </resources>

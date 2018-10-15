@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.example.stas.movies.R;
-import com.example.stas.movies.model.Movie;
+import com.example.stas.movies.model.Movie.Movie;
 import com.example.stas.movies.model.repository.TMDBService;
 import com.example.stas.movies.view.MovieGrid.listener.PosterClickListener;
 import com.squareup.picasso.Picasso;

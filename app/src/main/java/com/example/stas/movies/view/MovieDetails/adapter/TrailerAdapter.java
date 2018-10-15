@@ -9,11 +9,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.stas.movies.R;
-import com.example.stas.movies.model.Movie;
 import com.example.stas.movies.model.MovieTrailer;
 import com.example.stas.movies.view.MovieDetails.listener.MovieTrailerClickListener;
-import com.example.stas.movies.view.MovieGrid.listener.PosterClickListener;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;

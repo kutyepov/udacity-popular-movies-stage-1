@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.view.View;
 import com.example.stas.movies.R;
-import com.example.stas.movies.model.Movie;
+import com.example.stas.movies.model.Movie.Movie;
 import com.example.stas.movies.view.MovieDetails.MovieDetailsActivity;
 
 public class PosterClickListener implements View.OnClickListener {

@@ -1,13 +1,13 @@
-package com.example.stas.movies.model;
+package com.example.stas.movies.model.Movie;
 
+import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
 import android.os.Parcel;
 import android.os.Parcelable;
-
 import com.google.gson.annotations.SerializedName;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
+@Entity(tableName = "favorite_movie_table")
 public class Movie implements Parcelable {
     private final static String ID_KEY = "id";
     private final static String TITLE_KEY = "title";
@@ -16,22 +16,32 @@ public class Movie implements Parcelable {
     private final static String DESCRIPTION_KEY = "overview";
     private final static String IMAGE_PATH_KEY = "poster_path";
 
-    //    private JSONObject mMovie;
+    Movie() {}
+
+    @PrimaryKey
+    @ColumnInfo(name = ID_KEY)
     @SerializedName(ID_KEY)
     private int mID;
-    @SerializedName(TITLE_KEY)
-    private String mTitle = null;
-    @SerializedName(RATING_KEY)
-    private String mRating = null;
-    @SerializedName(RELEASE_DATE_KEY)
-    private String mReleaseDate = null;
-    @SerializedName(DESCRIPTION_KEY)
-    private String mDescription = null;
-    @SerializedName(IMAGE_PATH_KEY)
-    private String mPartialImagePath = null;
-//    private String mFullImagePath = null;
 
-//    public Movie() { }
+    @ColumnInfo(name = TITLE_KEY)
+    @SerializedName(TITLE_KEY)
+    private String mTitle;
+
+    @ColumnInfo(name = RATING_KEY)
+    @SerializedName(RATING_KEY)
+    private String mRating;
+
+    @ColumnInfo(name = RELEASE_DATE_KEY)
+    @SerializedName(RELEASE_DATE_KEY)
+    private String mReleaseDate;
+
+    @ColumnInfo(name = DESCRIPTION_KEY)
+    @SerializedName(DESCRIPTION_KEY)
+    private String mDescription;
+
+    @ColumnInfo(name = IMAGE_PATH_KEY)
+    @SerializedName(IMAGE_PATH_KEY)
+    private String mPartialImagePath;
 
     public int getID() {
         return mID;
@@ -57,6 +67,30 @@ public class Movie implements Parcelable {
         return mPartialImagePath;
     }
 
+    public void setID(int id) {
+        this.mID = id;
+    }
+
+    public void setTitle(String title) {
+        this.mTitle = title;
+    }
+
+    public void setRating(String rating) {
+        this.mRating = rating;
+    }
+
+    public void setReleaseDate(String releaseDate) {
+        this.mReleaseDate = releaseDate;
+    }
+
+    public void setDescription(String description) {
+        this.mDescription = description;
+    }
+
+    public void setPartialImagePath(String partialImagePath) {
+        this.mPartialImagePath = partialImagePath;
+    }
+
     @Override
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeInt(mID);
@@ -65,7 +99,6 @@ public class Movie implements Parcelable {
         parcel.writeString(mReleaseDate);
         parcel.writeString(mDescription);
         parcel.writeString(mPartialImagePath);
-//        parcel.writeString(mFullImagePath);
     }
 
     @Override
@@ -80,7 +113,6 @@ public class Movie implements Parcelable {
         mReleaseDate = parcel.readString();
         mDescription = parcel.readString();
         mPartialImagePath = parcel.readString();
-//        mFullImagePath = parcel.readString();
     }
 
     public static final Parcelable.Creator<Movie> CREATOR = new Parcelable.Creator<Movie>() {
@@ -92,5 +124,4 @@ public class Movie implements Parcelable {
             return new Movie[size];
         }
     };
-
 }

@@ -1,16 +1,28 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:tools="http://schemas.android.com/tools"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             tools:context="com.example.stas.movies.view.MovieDetails.MovieReviewFragment">
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                             xmlns:tools="http://schemas.android.com/tools"
+                                             android:layout_width="wrap_content"
+                                             android:layout_height="wrap_content"
+                                             xmlns:app="http://schemas.android.com/apk/res-auto"
+                                             tools:context="com.example.stas.movies.view.MovieDetails.MovieReviewFragment">
 
     <TextView
             android:id="@+id/author_tv"
+            app:layout_constraintTop_toTopOf="parent"
+            android:padding="8dp"
+            android:textStyle="bold"
+            android:textSize="16sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
     <TextView
             android:id="@+id/review_content_tv"
+            app:layout_constraintTop_toBottomOf="@id/author_tv"
+            android:padding="8dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
+    <View
+            android:layout_width="fill_parent"
+            app:layout_constraintTop_toBottomOf="@id/review_content_tv"
+            android:layout_height="1dp"
+            android:background="#e3e5e8" />
 
-</FrameLayout>
+</android.support.constraint.ConstraintLayout>

@@ -3,7 +3,8 @@ package com.example.stas.movies.viewmodel;
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
 import android.arch.lifecycle.LiveData;
-import com.example.stas.movies.model.Movie;
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
 import com.example.stas.movies.model.MovieTrailer;
 import com.example.stas.movies.model.repository.MovieRepository;
 
@@ -15,7 +16,12 @@ public class MovieTrailerListViewModel extends AndroidViewModel {
 
     public MovieTrailerListViewModel(Application application, int id) {
         super(application);
-        movieTrailerListObservable = MovieRepository.getInstance().getMovieTrailerList(id);
+        movieTrailerListObservable = MovieRepository.getInstance(application).getMovieTrailerList(id);
+        movieTrailerListObservable.observeForever(new Observer<List<MovieTrailer>>() {
+            @Override
+            public void onChanged(@Nullable List<MovieTrailer> value) {
+            }
+        });
     }
 
     public void setID(int id) {

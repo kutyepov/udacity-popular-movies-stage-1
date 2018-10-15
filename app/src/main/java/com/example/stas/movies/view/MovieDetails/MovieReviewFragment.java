@@ -8,13 +8,12 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.stas.movies.R;
-import com.example.stas.movies.model.Movie;
+import com.example.stas.movies.model.Movie.Movie;
 import com.example.stas.movies.model.MovieReview;
 import com.example.stas.movies.view.MovieDetails.adapter.ReviewAdapter;
 import com.example.stas.movies.viewmodel.MovieDetailsReviewListViewModelFactory;
@@ -46,7 +45,7 @@ public class MovieReviewFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        recyclerView = view.findViewById(R.id.movie_trailer_rv);
+        recyclerView = view.findViewById(R.id.movie_review_rv);
         recyclerView.setAdapter(reviewAdapter);
     }
 
@@ -54,7 +53,7 @@ public class MovieReviewFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_movie_trailer, container, false);
+        return inflater.inflate(R.layout.fragment_movie_review, container, false);
     }
 
     private void observeViewModel(MovieReviewListViewModel viewModel) {

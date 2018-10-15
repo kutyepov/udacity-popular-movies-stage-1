@@ -7,14 +7,14 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.stas.movies.R;
-import com.example.stas.movies.model.Movie;
+import com.example.stas.movies.model.Movie.Movie;
 import com.example.stas.movies.model.MovieTrailer;
 import com.example.stas.movies.view.MovieDetails.adapter.TrailerAdapter;
 import com.example.stas.movies.viewmodel.MovieTrailerListViewModel;
@@ -47,6 +47,8 @@ public class MovieTrailerFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         recyclerView = view.findViewById(R.id.movie_trailer_rv);
+        LinearLayoutManager layoutManager= new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+        recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(trailerAdapter);
     }
 

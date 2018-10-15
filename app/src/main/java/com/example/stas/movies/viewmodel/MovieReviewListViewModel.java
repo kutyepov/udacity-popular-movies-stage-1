@@ -13,7 +13,7 @@ public class MovieReviewListViewModel extends AndroidViewModel {
 
     public MovieReviewListViewModel(Application application, int id) {
         super(application);
-        movieTrailerListObservable = MovieRepository.getInstance().getMovieReviewList(id);
+        movieTrailerListObservable = MovieRepository.getInstance(application).getMovieReviewList(id);
     }
 
     public LiveData<List<MovieReview>> getMovieReviewListObservable() {

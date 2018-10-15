@@ -11,20 +11,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.stas.movies.R;
-import com.example.stas.movies.model.Movie;
+import com.example.stas.movies.model.Movie.Movie;
 import com.example.stas.movies.model.repository.TMDBService;
 import com.squareup.picasso.Picasso;
 
 public class MovieInfoFragment extends Fragment {
     public static final String TAG = "MovieInfoFragment";
-    private TextView titleTextView;
-    private ImageView posterImageView;
-    private TextView ratingTextView;
-    private TextView descriptionTextView;
-    private TextView releaseDateTextView;
     private Movie movie;
-//    private TrailerAdapter imageAdapter;
-//    private RecyclerView recyclerView;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -35,11 +28,11 @@ public class MovieInfoFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        titleTextView = view.findViewById(R.id.title);
-        posterImageView = view.findViewById(R.id.poster);
-        ratingTextView = view.findViewById(R.id.rating);
-        descriptionTextView = view.findViewById(R.id.description);
-        releaseDateTextView = view.findViewById(R.id.release_date);
+        TextView titleTextView = view.findViewById(R.id.title);
+        TextView ratingTextView = view.findViewById(R.id.rating);
+        TextView descriptionTextView = view.findViewById(R.id.description);
+        TextView releaseDateTextView = view.findViewById(R.id.release_date);
+        ImageView posterImageView = view.findViewById(R.id.poster);
         titleTextView.setText(movie.getTitle());
         ratingTextView.setText(movie.getRating());
 

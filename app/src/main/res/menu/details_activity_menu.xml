@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+      xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/add_to_favorites"
+          android:title=""
+          android:icon="@android:drawable/star_big_off"
+          android:visible="true"
+          app:showAsAction="always"/>
+
+    <item android:id="@+id/remove_from_favorites"
+          android:title=""
+          android:icon="@android:drawable/star_big_on"
+          android:visible="false"
+          app:showAsAction="always"/>
+</menu>
